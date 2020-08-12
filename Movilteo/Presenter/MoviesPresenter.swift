@@ -10,29 +10,42 @@ import RxSwift
 //import RealmSwift
 
 protocol MoviesViewPresenter: class {
-    func getMovies(page: Int)
+    func fetchMovies(page: Int)
 }
 
+/// Presenter for the MoviesVC.
 class MoviesPresenter: MoviesViewPresenter{
     
-    fileprivate let apiService: APIService
-    weak fileprivate var moviesView: MoviesView?
-    let moviesSequence = PublishSubject<Displayable>()
+    weak private var moviesView: MoviesView?
+    private let apiService: APIService
+    private let bag = DisposeBag()
+    private let moviesSequence = PublishSubject<Displayable>()
     
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
-    func attachView(_ attach: Bool, view: MoviesView?) {
-        if attach {
-            moviesView = nil
-        } else {
-            if let view = view { moviesView = view }
+    /// Linking the view with the moviesView variable.
+    func attachView(_ view: MoviesView?) {
+        if let view = view {
+            moviesView = view
         }
+        
+        fetchMovies(page: 1)
+        
+        self.moviesSequence.subscribe(onNext: {
+            self.moviesView?.addMovies(movie: $0)
+        }).disposed(by: bag)
     }
     
-    func getMovies(page: Int) {
+    /// Sending to the API Service to fetch the movies.
+    func fetchMovies(page: Int) {
+        self.moviesView?.setEmpty()
+        
         APIService.shared.fetchMovies(page: page) { moviesRes in
+            
+            self.moviesView?.setMaxPages(to: moviesRes.totalPages)
+            
             for movie in moviesRes.all{
                 self.moviesSequence.onNext(movie)
             }

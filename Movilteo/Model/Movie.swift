@@ -24,7 +24,6 @@ struct Movie: Codable {
         case overview
         case voteAverage = "vote_average"
     }
-    
 }
 
 protocol Displayable {
