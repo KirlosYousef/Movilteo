@@ -1,0 +1,6 @@
+framework module Pods_Movilteo {
+  umbrella header "Pods-Movilteo-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D97DA330CD538D0FE041CA5 /* Pods_Movilteo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F354A34EB730415646B584 /* Pods_Movilteo.framework */; };
+		BC070B6E24E058A200633401 /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC070B6D24E058A200633401 /* MoviesPresenter.swift */; };
+		BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2AAA9624E376D600C87B04 /* Secrets.swift */; };
+		BC65B44724E1F1F8007B10CD /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC65B44624E1F1F8007B10CD /* Movies.swift */; };
+		BCA3D51124E0381E00546EE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D51024E0381E00546EE1 /* AppDelegate.swift */; };
+		BCA3D51324E0381E00546EE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */; };
+		BCA3D51824E0381E00546EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA3D51624E0381E00546EE1 /* Main.storyboard */; };
+		BCA3D51A24E0381F00546EE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA3D51924E0381F00546EE1 /* Assets.xcassets */; };
+		BCA3D51D24E0381F00546EE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA3D51B24E0381F00546EE1 /* LaunchScreen.storyboard */; };
+		BCA3D52A24E03DF600546EE1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D52924E03DF600546EE1 /* Movie.swift */; };
+		BCC01F3D24E063D400770F68 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F3C24E063D400770F68 /* MovieCell.swift */; };
+		BCC01F3F24E0668500770F68 /* MoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F3E24E0668500770F68 /* MoviesVC.swift */; };
+		BCC01F4524E0732300770F68 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F4424E0732300770F68 /* APIService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08F354A34EB730415646B584 /* Pods_Movilteo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movilteo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F6C5868F6FBCE7002A48898 /* Pods-Movilteo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movilteo.debug.xcconfig"; path = "Target Support Files/Pods-Movilteo/Pods-Movilteo.debug.xcconfig"; sourceTree = "<group>"; };
+		B0B2F85F8238C84D8752E22B /* Pods-Movilteo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movilteo.release.xcconfig"; path = "Target Support Files/Pods-Movilteo/Pods-Movilteo.release.xcconfig"; sourceTree = "<group>"; };
+		BC070B6D24E058A200633401 /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
+		BC2AAA9624E376D600C87B04 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		BC65B44624E1F1F8007B10CD /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		BCA3D50D24E0381E00546EE1 /* Movilteo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movilteo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA3D51024E0381E00546EE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BCA3D51724E0381E00546EE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCA3D51924E0381F00546EE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCA3D51C24E0381F00546EE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BCA3D51E24E0381F00546EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCA3D52924E03DF600546EE1 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		BCC01F3C24E063D400770F68 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		BCC01F3E24E0668500770F68 /* MoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVC.swift; sourceTree = "<group>"; };
+		BCC01F4424E0732300770F68 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCA3D50A24E0381E00546EE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D97DA330CD538D0FE041CA5 /* Pods_Movilteo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4BB43FAAA25CC1A01A1491D1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F6C5868F6FBCE7002A48898 /* Pods-Movilteo.debug.xcconfig */,
+				B0B2F85F8238C84D8752E22B /* Pods-Movilteo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BCA3D50424E0381E00546EE1 = {
+			isa = PBXGroup;
+			children = (
+				BCA3D50F24E0381E00546EE1 /* Movilteo */,
+				BCA3D50E24E0381E00546EE1 /* Products */,
+				4BB43FAAA25CC1A01A1491D1 /* Pods */,
+				C5CD5CE71C87AC64C008D96D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BCA3D50E24E0381E00546EE1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCA3D50D24E0381E00546EE1 /* Movilteo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCA3D50F24E0381E00546EE1 /* Movilteo */ = {
+			isa = PBXGroup;
+			children = (
+				BCA3D52824E03D8100546EE1 /* Model */,
+				BCA3D52624E03D2600546EE1 /* View */,
+				BCA3D52524E03D1800546EE1 /* Presenter */,
+				BCA3D52424E03D1000546EE1 /* App */,
+				BCA3D51624E0381E00546EE1 /* Main.storyboard */,
+				BCA3D52724E03D3800546EE1 /* Supporting Files */,
+			);
+			path = Movilteo;
+			sourceTree = "<group>";
+		};
+		BCA3D52424E03D1000546EE1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BCA3D51024E0381E00546EE1 /* AppDelegate.swift */,
+				BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BCA3D52524E03D1800546EE1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				BC070B6D24E058A200633401 /* MoviesPresenter.swift */,
+				BCC01F4424E0732300770F68 /* APIService.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		BCA3D52624E03D2600546EE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCC01F3E24E0668500770F68 /* MoviesVC.swift */,
+				BCC01F3C24E063D400770F68 /* MovieCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BCA3D52724E03D3800546EE1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCA3D51924E0381F00546EE1 /* Assets.xcassets */,
+				BCA3D51B24E0381F00546EE1 /* LaunchScreen.storyboard */,
+				BCA3D51E24E0381F00546EE1 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCA3D52824E03D8100546EE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BCA3D52924E03DF600546EE1 /* Movie.swift */,
+				BC65B44624E1F1F8007B10CD /* Movies.swift */,
+				BC2AAA9624E376D600C87B04 /* Secrets.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5CD5CE71C87AC64C008D96D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08F354A34EB730415646B584 /* Pods_Movilteo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCA3D50C24E0381E00546EE1 /* Movilteo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCA3D52124E0381F00546EE1 /* Build configuration list for PBXNativeTarget "Movilteo" */;
+			buildPhases = (
+				83AA743F7CD14715956CCFEB /* [CP] Check Pods Manifest.lock */,
+				BCA3D50924E0381E00546EE1 /* Sources */,
+				BCA3D50A24E0381E00546EE1 /* Frameworks */,
+				BCA3D50B24E0381E00546EE1 /* Resources */,
+				2A1694F137A386E0A2EC29B8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Movilteo;
+			productName = Movilteo;
+			productReference = BCA3D50D24E0381E00546EE1 /* Movilteo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCA3D50524E0381E00546EE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					BCA3D50C24E0381E00546EE1 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+				};
+			};
+			buildConfigurationList = BCA3D50824E0381E00546EE1 /* Build configuration list for PBXProject "Movilteo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCA3D50424E0381E00546EE1;
+			productRefGroup = BCA3D50E24E0381E00546EE1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCA3D50C24E0381E00546EE1 /* Movilteo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCA3D50B24E0381E00546EE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCA3D51D24E0381F00546EE1 /* LaunchScreen.storyboard in Resources */,
+				BCA3D51A24E0381F00546EE1 /* Assets.xcassets in Resources */,
+				BCA3D51824E0381E00546EE1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A1694F137A386E0A2EC29B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movilteo/Pods-Movilteo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movilteo/Pods-Movilteo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movilteo/Pods-Movilteo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83AA743F7CD14715956CCFEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Movilteo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCA3D50924E0381E00546EE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCA3D51124E0381E00546EE1 /* AppDelegate.swift in Sources */,
+				BCC01F3D24E063D400770F68 /* MovieCell.swift in Sources */,
+				BCA3D52A24E03DF600546EE1 /* Movie.swift in Sources */,
+				BCC01F3F24E0668500770F68 /* MoviesVC.swift in Sources */,
+				BCA3D51324E0381E00546EE1 /* SceneDelegate.swift in Sources */,
+				BC65B44724E1F1F8007B10CD /* Movies.swift in Sources */,
+				BCC01F4524E0732300770F68 /* APIService.swift in Sources */,
+				BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */,
+				BC070B6E24E058A200633401 /* MoviesPresenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BCA3D51624E0381E00546EE1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCA3D51724E0381E00546EE1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BCA3D51B24E0381F00546EE1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCA3D51C24E0381F00546EE1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCA3D51F24E0381F00546EE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BCA3D52024E0381F00546EE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCA3D52224E0381F00546EE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F6C5868F6FBCE7002A48898 /* Pods-Movilteo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Movilteo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kirlosyousef.Movilteo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCA3D52324E0381F00546EE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0B2F85F8238C84D8752E22B /* Pods-Movilteo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Movilteo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kirlosyousef.Movilteo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCA3D50824E0381E00546EE1 /* Build configuration list for PBXProject "Movilteo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCA3D51F24E0381F00546EE1 /* Debug */,
+				BCA3D52024E0381F00546EE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCA3D52124E0381F00546EE1 /* Build configuration list for PBXNativeTarget "Movilteo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCA3D52224E0381F00546EE1 /* Debug */,
+				BCA3D52324E0381F00546EE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCA3D50524E0381E00546EE1 /* Project object */;
+}
