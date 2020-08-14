@@ -141,6 +141,8 @@ extension MoviesVC: UICollectionViewDataSource{
         let url = movie.posterURL
         if let data = try? Data(contentsOf: url) as Data?{
             cell.movieImageView.image = UIImage(data: data)
+        } else {
+            cell.movieImageView.image = #imageLiteral(resourceName: "No_Picture")
         }
         
         return cell
