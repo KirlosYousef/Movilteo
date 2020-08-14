@@ -17,9 +17,10 @@ protocol MoviesViewPresenter: class {
 class MoviesPresenter: MoviesViewPresenter{
     
     weak private var moviesView: MoviesView?
-    private let apiService: APIService
     private let bag = DisposeBag()
-    private let moviesSequence = PublishSubject<Displayable>()
+    private let apiService: APIService
+    let moviesSequence = PublishSubject<Movie>()
+    let allMoviesSequence = PublishSubject<Movies>()
     
     init(apiService: APIService) {
         self.apiService = apiService
@@ -41,7 +42,6 @@ class MoviesPresenter: MoviesViewPresenter{
     /// Sending to the API Service to fetch the movies.
     func fetchMovies(page: Int) {
         self.moviesView?.setEmpty()
-        
         APIService.shared.fetchMovies(page: page) { moviesRes in
             
             self.moviesView?.setMaxPages(to: moviesRes.totalPages)

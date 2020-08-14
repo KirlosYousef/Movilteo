@@ -20,6 +20,7 @@
 		BCC01F3D24E063D400770F68 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F3C24E063D400770F68 /* MovieCell.swift */; };
 		BCC01F3F24E0668500770F68 /* MoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F3E24E0668500770F68 /* MoviesVC.swift */; };
 		BCC01F4524E0732300770F68 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F4424E0732300770F68 /* APIService.swift */; };
+		BCF68C2824E4B7E7004CE779 /* MovieDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF68C2724E4B7E7004CE779 /* MovieDataVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BCC01F3C24E063D400770F68 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		BCC01F3E24E0668500770F68 /* MoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVC.swift; sourceTree = "<group>"; };
 		BCC01F4424E0732300770F68 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		BCF68C2724E4B7E7004CE779 /* MovieDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				BCC01F3E24E0668500770F68 /* MoviesVC.swift */,
 				BCC01F3C24E063D400770F68 /* MovieCell.swift */,
+				BCF68C2724E4B7E7004CE779 /* MovieDataVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				BCC01F4524E0732300770F68 /* APIService.swift in Sources */,
 				BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */,
 				BC070B6E24E058A200633401 /* MoviesPresenter.swift in Sources */,
+				BCF68C2824E4B7E7004CE779 /* MovieDataVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
