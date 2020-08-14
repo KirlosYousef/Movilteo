@@ -18,13 +18,8 @@ class MoviesPresenter: MoviesViewPresenter{
     
     weak private var moviesView: MoviesView?
     private let bag = DisposeBag()
-    private let apiService: APIService
     let moviesSequence = PublishSubject<Movie>()
-    let allMoviesSequence = PublishSubject<Movies>()
-    
-    init(apiService: APIService) {
-        self.apiService = apiService
-    }
+    let searchedMoviesSequence = PublishSubject<Movie>()
     
     /// Linking the view with the moviesView variable.
     func attachView(_ view: MoviesView?) {
@@ -37,18 +32,48 @@ class MoviesPresenter: MoviesViewPresenter{
         self.moviesSequence.subscribe(onNext: {
             self.moviesView?.addMovies(movie: $0)
         }).disposed(by: bag)
+        
+        self.searchedMoviesSequence.subscribe(onNext: {
+            self.moviesView?.addMovies(movie: $0)
+        }).disposed(by: bag)
     }
     
     /// Sending to the API Service to fetch the movies.
     func fetchMovies(page: Int) {
+        
         self.moviesView?.setEmpty()
+        
         APIService.shared.fetchMovies(page: page) { moviesRes in
             
             self.moviesView?.setMaxPages(to: moviesRes.totalPages)
+            self.moviesView?.setCurrentPage(to: moviesRes.page)
             
             for movie in moviesRes.all{
                 self.moviesSequence.onNext(movie)
             }
+            
+            self.moviesView?.reload()
+        }
+    }
+    
+    /// Sending to the API Service to fetch the movies with searching keyword.
+    func fetchMovies(withKeyword keyword: String, page: Int){
+        
+        self.moviesView?.setEmpty()
+        
+        let keywordMerged = keyword.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        
+        APIService.shared.searchMovie(for: keywordMerged, page: page) { moviesRes in
+            
+            self.moviesView?.setMaxPages(to: moviesRes.totalPages)
+            self.moviesView?.setCurrentPage(to: moviesRes.page)
+            
+            
+            for movie in moviesRes.all{
+                self.searchedMoviesSequence.onNext(movie)
+            }
+            
+            self.moviesView?.reload()
         }
     }
 }

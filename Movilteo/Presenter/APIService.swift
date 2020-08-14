@@ -24,4 +24,15 @@ class APIService{
                 complition(movies)
             }
     }
+    
+    func searchMovie(for query: String, page: Int, _ complition: @escaping (Movies) -> ()){
+        let url = "https://api.themoviedb.org/3/search/movie?api_key=\(TMDBApiKey)&language=en-US&query=\(query)&sort_by=popularity.desc&include_adult=false&include_video=false&page=\(page)"    
+        
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: Movies.self) { (response) in
+                guard let movies = response.value else { return }
+                complition(movies)
+            }
+    }
 }

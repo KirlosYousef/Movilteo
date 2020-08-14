@@ -7,12 +7,14 @@
 
 import Foundation
 import UIKit
-import RxSwift
 
 protocol MoviesView: class {
     func addMovies(movie: Movie)
+    func addSearchedMovies(movie: Movie)
+    func setCurrentPage(to num: Int)
     func setMaxPages(to num: Int)
     func setEmpty()
+    func reload()
 }
 
 final class MoviesVC: UIViewController{
@@ -22,7 +24,7 @@ final class MoviesVC: UIViewController{
     @IBOutlet weak var backButtonOutlet: UIButton!
     @IBOutlet weak var nextButtonOutlet: UIButton!
     
-    private let moviesPresenter = MoviesPresenter(apiService: APIService())
+    private let moviesPresenter = MoviesPresenter()
     private var moviesToShow: [Movie] = []
     
     private var currentPageNum: Int = 1
@@ -30,12 +32,15 @@ final class MoviesVC: UIViewController{
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchResults: [Movie] = []
+    private var searchText: String = ""
+    private var isSearching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        searchController.searchBar.delegate = self
         let screenWidth = UIScreen.main.bounds.width
         
         // For the cell constrains
@@ -46,26 +51,30 @@ final class MoviesVC: UIViewController{
         layout.minimumLineSpacing = 20
         collectionView!.collectionViewLayout = layout
         
-        searchController.searchResultsUpdater = self
         self.definesPresentationContext = true
         
         // Place the search bar in the navigation item's title view.
         self.navigationItem.titleView = searchController.searchBar
         
-        // Don't hide the navigation bar because the search bar is in it.
+        // Don't hide the navigation bar or view because the search bar is in it.
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         
         backButtonOutlet.isEnabled = false
         
         moviesPresenter.attachView(self)
     }
     
-    // MARK: - Movies data
+    // MARK: - Getting movies methods
     
     /// Request the movies of the new page from the presenter and updates page number label text.
     private func getMovies(){
         moviesPresenter.fetchMovies(page: currentPageNum)
-        pageNumLabel.text = String(currentPageNum)
+    }
+    
+    /// Request the movies of the new page from the presenter and updates page number label text.
+    private func searchMovies(for keyword: String){
+        moviesPresenter.fetchMovies(withKeyword: keyword, page: currentPageNum)
     }
     
     // MARK: - Buttons methods
@@ -80,7 +89,7 @@ final class MoviesVC: UIViewController{
                 nextButtonOutlet.isEnabled = true
             }
         } else {
-            if currentPageNum == maxPagesNum {
+            if currentPageNum == maxPagesNum - 1 {
                 nextButtonOutlet.isEnabled = false
             }
             if backButtonOutlet.isEnabled == false{
@@ -92,33 +101,17 @@ final class MoviesVC: UIViewController{
     @IBAction func backButtonAction(_ sender: Any) {
         resetButtons(button: CustomButton.back)
         currentPageNum -= 1
-        getMovies()
+        isSearching ? searchMovies(for: searchText) : getMovies()
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
         resetButtons(button: CustomButton.next)
         currentPageNum += 1
-        getMovies()
+        isSearching ? searchMovies(for: searchText) : getMovies()
     }
 }
 
-
-extension MoviesVC: MoviesView{
-    
-    func addMovies(movie: Movie){
-        self.moviesToShow.append(movie)
-        self.collectionView.reloadData()
-        self.collectionView.setContentOffset(.zero, animated: true) // Scroll to top
-    }
-    
-    func setMaxPages(to num: Int){
-        self.maxPagesNum = num
-    }
-    
-    func setEmpty(){
-        self.moviesToShow.removeAll()
-    }
-}
+// MARK: - UICollectionView methods
 
 extension MoviesVC: UICollectionViewDelegate{
     
@@ -137,14 +130,13 @@ extension MoviesVC: UICollectionViewDelegate{
 extension MoviesVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchController.isActive ? searchResults.count : moviesToShow.count
+        return searchResults.isEmpty ? moviesToShow.count : searchResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieImageCell", for: indexPath as IndexPath) as! MovieCell
         
-        let movie = searchController.isActive ?
-            searchResults[indexPath.row] : moviesToShow[indexPath.row]
+        let movie = searchResults.isEmpty ? moviesToShow[indexPath.row] : searchResults[indexPath.row]
         
         let url = movie.posterURL
         if let data = try? Data(contentsOf: url) as Data?{
@@ -155,25 +147,61 @@ extension MoviesVC: UICollectionViewDataSource{
     }
 }
 
-extension MoviesVC: UISearchResultsUpdating{
+// MARK: - UISearchBar method
+
+extension MoviesVC: UISearchBarDelegate{
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // If the search bar contains text, filter our data with the string
+        
         if let searchText = searchController.searchBar.text {
-            filterContent(for: searchText)
-            // Reload the table view with the search result data.
-            collectionView.reloadData()
+            self.searchText = searchText
+            currentPageNum = 1
+            isSearching = true
+            backButtonOutlet.isEnabled = false
+            searchMovies(for: searchText)
         }
     }
     
-    func filterContent(for searchText: String) {
-        // Update the searchResults array with matches
-        // in our movies based on the title value.
-        searchResults = moviesToShow.filter({ movie -> Bool in
-            let match = movie.titleLabelText.range(of: searchText, options: .caseInsensitive)
-            // Return the results if the range contains a match.
-            return match != nil
-        })
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        currentPageNum = 1
+        getMovies()
+    }
+    
+}
+
+// MARK: - Custom
+
+extension MoviesVC: MoviesView{
+    
+    func addMovies(movie: Movie){
+        moviesToShow.append(movie)
+        collectionView.setContentOffset(.zero, animated: true) // Scroll to top
+    }
+    
+    func addSearchedMovies(movie: Movie){
+        searchResults.append(movie)
+        collectionView.setContentOffset(.zero, animated: true) // Scroll to top
+    }
+    
+    func setCurrentPage(to num: Int){
+        currentPageNum = num
+        pageNumLabel.text = String(currentPageNum)
+    }
+    
+    func setMaxPages(to num: Int){
+        maxPagesNum = num
+    }
+    
+    func setEmpty(){
+        moviesToShow.removeAll()
+        searchResults.removeAll()
+        reload()
+    }
+    
+    func reload(){
+        collectionView.reloadData()
     }
 }
 
