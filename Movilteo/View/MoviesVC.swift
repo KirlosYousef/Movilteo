@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol MoviesView: class {
+    func getMovies()
     func addMovies(movie: Movie)
     func addSearchedMovies(movie: Movie)
     func setCurrentPage(to num: Int)
@@ -68,13 +69,13 @@ final class MoviesVC: UIViewController{
     // MARK: - Getting movies methods
     
     /// Request the movies of the new page from the presenter and updates page number label text.
-    private func getMovies(){
+    func getMovies(){
         moviesPresenter.fetchMovies(page: currentPageNum)
     }
     
     /// Request the movies of the new page from the presenter and updates page number label text.
     private func searchMovies(for keyword: String){
-        moviesPresenter.fetchMovies(withKeyword: keyword, page: currentPageNum)
+        moviesPresenter.searchForMovies(withKeyword: keyword, page: currentPageNum)
     }
     
     // MARK: - Buttons methods
@@ -117,11 +118,7 @@ extension MoviesVC: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MovieDataVC") as? MovieDataVC
-        vc?.movieTitle = moviesToShow[indexPath.row].titleLabelText
-        vc?.movieRating = String(moviesToShow[indexPath.row].voteAverage)
-        vc?.movieOverview = moviesToShow[indexPath.row].overview
-        vc?.movieImageUrl = moviesToShow[indexPath.row].posterURL
-        
+        vc?.movie = moviesToShow[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -130,7 +127,9 @@ extension MoviesVC: UICollectionViewDelegate{
 extension MoviesVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return searchResults.isEmpty ? moviesToShow.count : searchResults.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,12 +137,7 @@ extension MoviesVC: UICollectionViewDataSource{
         
         let movie = searchResults.isEmpty ? moviesToShow[indexPath.row] : searchResults[indexPath.row]
         
-        let url = movie.posterURL
-        if let data = try? Data(contentsOf: url) as Data?{
-            cell.movieImageView.image = UIImage(data: data)
-        } else {
-            cell.movieImageView.image = #imageLiteral(resourceName: "No_Picture")
-        }
+        cell.movieImageView.image = ImagesService.shared.getSavedImage(withID: movie.id, posterURL: movie.posterURL)
         
         return cell
     }

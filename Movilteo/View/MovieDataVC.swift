@@ -15,22 +15,17 @@ class MovieDataVC: UIViewController {
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieOverviewLabel: UILabel!
     
-    var movieImageUrl = URL(string: "")
-    var movieTitle = ""
-    var movieRating = ""
-    var movieOverview = ""
+    var movie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        movieTitleLabel.text = movieTitle
-        movieRatingLabel.text = movieRating
-        movieOverviewLabel.text = movieOverview
-        
-        
-        if let data = try? Data(contentsOf: movieImageUrl!) as Data?{
-            movieImage.image = UIImage(data: data)
+        if movie != nil {
+            movieTitleLabel.text = movie!.titleLabelText
+            movieRatingLabel.text = movie!.ratingText
+            movieOverviewLabel.text = movie!.overview
+            movieImage.image = ImagesService.shared.getSavedImage(withID: movie!.id, posterURL: movie!.posterURL)
+        } else{
+            movieTitleLabel.text = "An error occurred, please check your internet."
         }
     }
-    
 }

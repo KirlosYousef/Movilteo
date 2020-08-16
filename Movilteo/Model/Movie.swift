@@ -6,15 +6,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Movie: Codable {
+class Movie: Object, Decodable {
     
-    let id: Int
-    let title: String?
-    let backdropPath: String?
-    let posterPath: String?
-    let overview: String
-    let voteAverage: Double
+    @objc dynamic var id: Int
+    @objc dynamic var title: String?
+    @objc dynamic var backdropPath: String?
+    @objc dynamic var posterPath: String?
+    @objc dynamic var overview: String
+    @objc dynamic var voteAverage: Double
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,6 +46,10 @@ extension Movie: Displayable {
     }
     
     var posterURL: URL {
+        if posterPath == nil {
+            return URL(string: "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg")!
+        }
+        
         return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }
     

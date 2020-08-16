@@ -206,16 +206,26 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-tH-xIU">
+                                    <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-tH-xIU">
                                         <rect key="frame" x="0.0" y="233" width="414" height="541"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-67-wW2">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="541"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-67-wW2">
+                                                <rect key="frame" x="16" y="0.0" width="382" height="541"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Overview">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="9dg-67-wW2" firstAttribute="leading" secondItem="hjx-tH-xIU" secondAttribute="leading" constant="16" id="Ywr-cZ-FdV"/>
+                                            <constraint firstAttribute="trailing" secondItem="9dg-67-wW2" secondAttribute="trailing" constant="16" id="h5M-IZ-Dbd"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>

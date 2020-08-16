@@ -10,6 +10,7 @@
 		0D97DA330CD538D0FE041CA5 /* Pods_Movilteo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F354A34EB730415646B584 /* Pods_Movilteo.framework */; };
 		BC070B6E24E058A200633401 /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC070B6D24E058A200633401 /* MoviesPresenter.swift */; };
 		BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2AAA9624E376D600C87B04 /* Secrets.swift */; };
+		BC335F3824E83C6100908DC4 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC335F3724E83C6100908DC4 /* RealmService.swift */; };
 		BC65B44724E1F1F8007B10CD /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC65B44624E1F1F8007B10CD /* Movies.swift */; };
 		BCA3D51124E0381E00546EE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D51024E0381E00546EE1 /* AppDelegate.swift */; };
 		BCA3D51324E0381E00546EE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */; };
@@ -21,6 +22,9 @@
 		BCC01F3F24E0668500770F68 /* MoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F3E24E0668500770F68 /* MoviesVC.swift */; };
 		BCC01F4524E0732300770F68 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC01F4424E0732300770F68 /* APIService.swift */; };
 		BCF68C2824E4B7E7004CE779 /* MovieDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF68C2724E4B7E7004CE779 /* MovieDataVC.swift */; };
+		BCFCCADD24E9C869005F77E5 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCCADC24E9C869005F77E5 /* ImagesService.swift */; };
+		BCFCCADF24E9D980005F77E5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCCADE24E9D980005F77E5 /* Reachability.swift */; };
+		BCFCCAE324E9DA8D005F77E5 /* ReachabilityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCCAE224E9DA8D005F77E5 /* ReachabilityHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,7 @@
 		B0B2F85F8238C84D8752E22B /* Pods-Movilteo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movilteo.release.xcconfig"; path = "Target Support Files/Pods-Movilteo/Pods-Movilteo.release.xcconfig"; sourceTree = "<group>"; };
 		BC070B6D24E058A200633401 /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
 		BC2AAA9624E376D600C87B04 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		BC335F3724E83C6100908DC4 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		BC65B44624E1F1F8007B10CD /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		BCA3D50D24E0381E00546EE1 /* Movilteo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movilteo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA3D51024E0381E00546EE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +47,9 @@
 		BCC01F3E24E0668500770F68 /* MoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVC.swift; sourceTree = "<group>"; };
 		BCC01F4424E0732300770F68 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		BCF68C2724E4B7E7004CE779 /* MovieDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataVC.swift; sourceTree = "<group>"; };
+		BCFCCADC24E9C869005F77E5 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
+		BCFCCADE24E9D980005F77E5 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BCFCCAE224E9DA8D005F77E5 /* ReachabilityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,11 +94,11 @@
 		BCA3D50F24E0381E00546EE1 /* Movilteo */ = {
 			isa = PBXGroup;
 			children = (
+				BCA3D51624E0381E00546EE1 /* Main.storyboard */,
 				BCA3D52824E03D8100546EE1 /* Model */,
 				BCA3D52624E03D2600546EE1 /* View */,
 				BCA3D52524E03D1800546EE1 /* Presenter */,
 				BCA3D52424E03D1000546EE1 /* App */,
-				BCA3D51624E0381E00546EE1 /* Main.storyboard */,
 				BCA3D52724E03D3800546EE1 /* Supporting Files */,
 			);
 			path = Movilteo;
@@ -101,6 +109,8 @@
 			children = (
 				BCA3D51024E0381E00546EE1 /* AppDelegate.swift */,
 				BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */,
+				BCFCCADE24E9D980005F77E5 /* Reachability.swift */,
+				BCFCCAE224E9DA8D005F77E5 /* ReachabilityHandler.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -110,6 +120,8 @@
 			children = (
 				BC070B6D24E058A200633401 /* MoviesPresenter.swift */,
 				BCC01F4424E0732300770F68 /* APIService.swift */,
+				BC335F3724E83C6100908DC4 /* RealmService.swift */,
+				BCFCCADC24E9C869005F77E5 /* ImagesService.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -266,7 +278,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCFCCAE324E9DA8D005F77E5 /* ReachabilityHandler.swift in Sources */,
 				BCA3D51124E0381E00546EE1 /* AppDelegate.swift in Sources */,
+				BC335F3824E83C6100908DC4 /* RealmService.swift in Sources */,
 				BCC01F3D24E063D400770F68 /* MovieCell.swift in Sources */,
 				BCA3D52A24E03DF600546EE1 /* Movie.swift in Sources */,
 				BCC01F3F24E0668500770F68 /* MoviesVC.swift in Sources */,
@@ -274,8 +288,10 @@
 				BC65B44724E1F1F8007B10CD /* Movies.swift in Sources */,
 				BCC01F4524E0732300770F68 /* APIService.swift in Sources */,
 				BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */,
+				BCFCCADD24E9C869005F77E5 /* ImagesService.swift in Sources */,
 				BC070B6E24E058A200633401 /* MoviesPresenter.swift in Sources */,
 				BCF68C2824E4B7E7004CE779 /* MovieDataVC.swift in Sources */,
+				BCFCCADF24E9D980005F77E5 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
