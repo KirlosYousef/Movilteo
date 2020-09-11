@@ -61,6 +61,21 @@ final class MoviesVC: UIViewController{
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         
+        for subView in searchController.searchBar.subviews {
+
+            for subViewOne in subView.subviews {
+
+                if let textField = subViewOne as? UITextField {
+
+                   subViewOne.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+                    
+                   //use the code below if you want to change the color of placeholder
+                   let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
+                    textFieldInsideUISearchBarLabel?.textColor = .black
+                }
+             }
+        }
+        
         backButtonOutlet.isEnabled = false
         
         moviesPresenter.attachView(self)
@@ -138,6 +153,13 @@ extension MoviesVC: UICollectionViewDataSource{
         let movie = searchResults.isEmpty ? moviesToShow[indexPath.row] : searchResults[indexPath.row]
         
         cell.movieImageView.image = ImagesService.shared.getSavedImage(withID: movie.id, posterURL: movie.posterURL)
+ 
+        // corner radius
+        cell.movieImageView.layer.cornerRadius = 10
+
+        // border
+        cell.movieImageView.layer.borderWidth = 2
+        cell.movieImageView.layer.borderColor = UIColor.random.cgColor
         
         return cell
     }
@@ -204,4 +226,13 @@ extension MoviesVC: MoviesView{
 private enum CustomButton{
     case next,
          back
+}
+
+extension UIColor {
+    static var random: UIColor {
+        return UIColor(red: .random(in: 0...1),
+                       green: .random(in: 0...1),
+                       blue: .random(in: 0...1),
+                       alpha: 0.3)
+    }
 }
