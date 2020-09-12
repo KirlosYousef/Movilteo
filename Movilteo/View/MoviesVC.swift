@@ -24,6 +24,8 @@ final class MoviesVC: UIViewController{
     @IBOutlet weak var pageNumLabel: UILabel!
     @IBOutlet weak var backButtonOutlet: UIButton!
     @IBOutlet weak var nextButtonOutlet: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     private let moviesPresenter = MoviesPresenter()
     private var moviesToShow: [Movie] = []
@@ -38,13 +40,14 @@ final class MoviesVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
         
         collectionView.delegate = self
         collectionView.dataSource = self
         searchController.searchBar.delegate = self
         let screenWidth = UIScreen.main.bounds.width
         
-        // For the cell constrains
+        /// Cell Constrains
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 15, bottom: 30, right: 15)
         layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/2)
@@ -54,6 +57,7 @@ final class MoviesVC: UIViewController{
         
         self.definesPresentationContext = true
         
+        /// Search Controller
         // Place the search bar in the navigation item's title view.
         self.navigationItem.titleView = searchController.searchBar
         
@@ -62,21 +66,24 @@ final class MoviesVC: UIViewController{
         searchController.obscuresBackgroundDuringPresentation = false
         
         for subView in searchController.searchBar.subviews {
-
+            
             for subViewOne in subView.subviews {
-
+                
                 if let textField = subViewOne as? UITextField {
-
-                   subViewOne.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                     
-                   //use the code below if you want to change the color of placeholder
-                   let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
+                    subViewOne.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+                    
+                    //use the code below if you want to change the color of placeholder
+                    let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
                     textFieldInsideUISearchBarLabel?.textColor = .black
                 }
-             }
+            }
         }
         
+        /// Buttons
         backButtonOutlet.isEnabled = false
+        backButtonOutlet.setTitleColor(.gray, for: .disabled)
+        nextButtonOutlet.setTitleColor(.gray, for: .disabled)
         
         moviesPresenter.attachView(self)
     }
@@ -107,6 +114,7 @@ final class MoviesVC: UIViewController{
         } else {
             if currentPageNum == maxPagesNum - 1 {
                 nextButtonOutlet.isEnabled = false
+                backButtonOutlet.titleLabel?.textColor = .black
             }
             if backButtonOutlet.isEnabled == false{
                 backButtonOutlet.isEnabled = true
@@ -153,13 +161,15 @@ extension MoviesVC: UICollectionViewDataSource{
         let movie = searchResults.isEmpty ? moviesToShow[indexPath.row] : searchResults[indexPath.row]
         
         cell.movieImageView.image = ImagesService.shared.getSavedImage(withID: movie.id, posterURL: movie.posterURL)
- 
+        
         // corner radius
         cell.movieImageView.layer.cornerRadius = 10
-
+        
         // border
         cell.movieImageView.layer.borderWidth = 2
         cell.movieImageView.layer.borderColor = UIColor.random.cgColor
+        
+        activityIndicator.stopAnimating()
         
         return cell
     }
@@ -215,6 +225,7 @@ extension MoviesVC: MoviesView{
     func setEmpty(){
         moviesToShow.removeAll()
         searchResults.removeAll()
+        activityIndicator.startAnimating()
         reload()
     }
     

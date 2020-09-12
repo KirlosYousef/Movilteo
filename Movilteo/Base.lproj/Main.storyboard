@@ -62,9 +62,14 @@
                                                     <outlet property="delegate" destination="4hb-cH-FhI" id="Bey-6t-m47"/>
                                                 </connections>
                                             </collectionView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-7L-X4r">
+                                                <rect key="frame" x="177" y="352" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ieY-Da-39l" firstAttribute="leading" secondItem="n3o-Jb-5IJ" secondAttribute="leading" id="KEy-O1-wMh"/>
+                                            <constraint firstItem="yvW-7L-X4r" firstAttribute="centerX" secondItem="n3o-Jb-5IJ" secondAttribute="centerX" id="TfF-nq-Kvz"/>
+                                            <constraint firstItem="yvW-7L-X4r" firstAttribute="centerY" secondItem="n3o-Jb-5IJ" secondAttribute="centerY" id="XEz-Ko-piD"/>
                                             <constraint firstAttribute="bottom" secondItem="ieY-Da-39l" secondAttribute="bottom" id="lkP-9y-5F6"/>
                                             <constraint firstItem="ieY-Da-39l" firstAttribute="top" secondItem="n3o-Jb-5IJ" secondAttribute="top" id="ndt-ka-mma"/>
                                             <constraint firstAttribute="trailing" secondItem="ieY-Da-39l" secondAttribute="trailing" id="vsn-ut-QkG"/>
@@ -145,6 +150,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="yvW-7L-X4r" id="g6x-ZC-cGp"/>
                         <outlet property="backButtonOutlet" destination="9tP-PK-t6j" id="b1K-7v-pcG"/>
                         <outlet property="collectionView" destination="ieY-Da-39l" id="w9n-Na-lbU"/>
                         <outlet property="nextButtonOutlet" destination="Z3u-Am-d9K" id="tBf-ng-b2f"/>
