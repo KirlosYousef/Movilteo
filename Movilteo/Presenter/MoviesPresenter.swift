@@ -15,6 +15,7 @@ class MoviesPresenter: MoviesViewPresenter{
     private let bag = DisposeBag()
     private let moviesSequence = PublishSubject<Movie>()
     private let searchedMoviesSequence = PublishSubject<Movie>()
+    private let genresSequence = PublishSubject<Genre>()
     
     /// Linking the view with the moviesView variable.
     func attachView(_ view: MoviesView?) {
@@ -29,6 +30,18 @@ class MoviesPresenter: MoviesViewPresenter{
         self.searchedMoviesSequence.subscribe(onNext: {
             self.moviesView?.addMovies(movie: $0)
         }).disposed(by: bag)
+        
+        self.genresSequence.subscribe(onNext: {
+            self.moviesView?.addGenres(genre: $0)
+        }).disposed(by: bag)
+    }
+    
+    func fetchGenres(){
+        APIService.shared.getGenres { genres in
+            for genre in genres.all{
+                self.genresSequence.onNext(genre)
+            }
+        }
     }
     
     /// Sending to the API Service to fetch the movies.
@@ -83,8 +96,8 @@ class MoviesPresenter: MoviesViewPresenter{
      Sending to the API Service to fetch the movies with searching keyword.
      
      - Parameters:
-        - withKeyword: The word to search for.
-        - page: Page number of the searching results.
+     - withKeyword: The word to search for.
+     - page: Page number of the searching results.
      */
     func searchForMovies(withKeyword keyword: String, page: Int){
         
@@ -109,5 +122,6 @@ class MoviesPresenter: MoviesViewPresenter{
 protocol MoviesViewPresenter: class {
     func attachView(_ view: MoviesView?)
     func fetchMovies(page: Int)
+    func fetchGenres()
     func searchForMovies(withKeyword keyword: String, page: Int)
 }

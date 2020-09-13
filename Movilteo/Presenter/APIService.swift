@@ -44,4 +44,15 @@ class APIService{
                 complition(movies)
             }
     }
+    
+    func getGenres( _ complition: @escaping (Genres) -> ()){
+        let url = "https://api.themoviedb.org/3/genre/movie/list?api_key=\(TMDBApiKey)&language=en-US"
+        
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: Genres.self) { (response) in
+                guard let genres = response.value else { return }
+                complition(genres)
+            }
+    }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol MoviesView: class {
     func getMovies()
+    func addGenres(genre: Genre)
     func addMovies(movie: Movie)
     func addSearchedMovies(movie: Movie)
     func setCurrentPage(to num: Int)
@@ -20,7 +21,8 @@ protocol MoviesView: class {
 
 final class MoviesVC: UIViewController{
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var pageNumLabel: UILabel!
     @IBOutlet weak var backButtonOutlet: UIButton!
     @IBOutlet weak var nextButtonOutlet: UIButton!
@@ -28,6 +30,7 @@ final class MoviesVC: UIViewController{
     
     private let moviesPresenter = MoviesPresenter()
     private var moviesToShow: [Movie] = []
+    private var genresToShow: [Genre] = []
     
     private var currentPageNum: Int = 1
     private var maxPagesNum: Int = 500
@@ -37,52 +40,23 @@ final class MoviesVC: UIViewController{
     private var searchText: String = ""
     private var isSearching: Bool = false
     
+    let screenWidth = UIScreen.main.bounds.width
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        moviesCollectionView.delegate = self
+        moviesCollectionView.dataSource = self
+        genreCollectionView.delegate = self
+        genreCollectionView.dataSource = self
         searchController.searchBar.delegate = self
-        let screenWidth = UIScreen.main.bounds.width
         
-        /// Cell Constrains
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 15, bottom: 30, right: 15)
-        layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/2)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 20
-        collectionView!.collectionViewLayout = layout
-        
+        self.genreCollectionView.isPagingEnabled = true
         self.definesPresentationContext = true
-        
-        /// Search Controller
-        // Place the search bar in the navigation item's title view.
-        self.navigationItem.titleView = searchController.searchBar
-        
-        // Don't hide the navigation bar or view because the search bar is in it.
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        
-        for subView in searchController.searchBar.subviews {
-            
-            for subViewOne in subView.subviews {
-                
-                if let textField = subViewOne as? UITextField {
-                    
-                    subViewOne.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-                    
-                    //use the code below if you want to change the color of placeholder
-                    let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
-                    textFieldInsideUISearchBarLabel?.textColor = .black
-                }
-            }
-        }
-        
-        /// Buttons
-        backButtonOutlet.isEnabled = false
-        backButtonOutlet.setTitleColor(.gray, for: .disabled)
-        nextButtonOutlet.setTitleColor(.gray, for: .disabled)
+        moviesPresenter.fetchGenres()
+        setupSearchController()
+        setupButtons()
         
         moviesPresenter.attachView(self)
     }
@@ -100,6 +74,12 @@ final class MoviesVC: UIViewController{
     }
     
     // MARK: - Buttons methods
+    
+    private func setupButtons(){
+        backButtonOutlet.isEnabled = false
+        backButtonOutlet.setTitleColor(.gray, for: .disabled)
+        nextButtonOutlet.setTitleColor(.gray, for: .disabled)
+    }
     
     /// Updates the buttons states (enabled/disabled) depends on the current page number.
     private func resetButtons(button: CustomButton){
@@ -145,9 +125,13 @@ final class MoviesVC: UIViewController{
 extension MoviesVC: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "MovieDataVC") as? MovieDataVC
-        vc?.movie = moviesToShow[indexPath.row]
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if collectionView == self.moviesCollectionView{
+            let vc = storyboard?.instantiateViewController(withIdentifier: "MovieDataVC") as? MovieDataVC
+            vc?.movie = moviesToShow[indexPath.row]
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else{
+            print("\(genresToShow[indexPath.row].name!)")
+        }
     }
     
 }
@@ -155,34 +139,96 @@ extension MoviesVC: UICollectionViewDelegate{
 extension MoviesVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return searchResults.isEmpty ? moviesToShow.count : searchResults.count
-        
+        if collectionView == moviesCollectionView{
+            return searchResults.isEmpty ? moviesToShow.count : searchResults.count
+        } else {
+            return genresToShow.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieImageCell", for: indexPath as IndexPath) as! MovieCell
-        
-        let movie = searchResults.isEmpty ? moviesToShow[indexPath.row] : searchResults[indexPath.row]
-        
-        cell.movieImageView.image = ImagesService.shared.getSavedImage(withID: movie.id, posterURL: movie.posterURL)
-        
-        // corner radius
-        cell.movieImageView.layer.cornerRadius = 10
-        
-        // border
-        cell.movieImageView.layer.borderWidth = 2
-        cell.movieImageView.layer.borderColor = UIColor.random.cgColor
-        
-        activityIndicator.stopAnimating()
-        
-        return cell
+        if collectionView == moviesCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieImageCell", for: indexPath as IndexPath) as! MovieCell
+            
+            let movie = searchResults.isEmpty ? moviesToShow[indexPath.row] : searchResults[indexPath.row]
+            
+            cell.movieImageView.image = ImagesService.shared.getSavedImage(withID: movie.id, posterURL: movie.posterURL)
+            
+            cell.movieImageView.layer.cornerRadius = 10
+            
+            // border
+            cell.movieImageView.layer.borderWidth = 2
+            cell.movieImageView.layer.borderColor = UIColor.random.cgColor
+            
+            activityIndicator.stopAnimating()
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreTitleCell", for: indexPath as IndexPath) as! GenreCell
+            
+            let genre = genresToShow[indexPath.row]
+            
+            cell.genreTitle.text = genre.name
+            cell.titleBackground.layer.cornerRadius = 5
+            
+            return cell
+        }
+    }
+}
+
+extension MoviesVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == moviesCollectionView{
+            return CGSize(width: screenWidth/3, height: screenWidth/2)
+        } else {
+            return CGSize(width: screenWidth/3, height: 30)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == moviesCollectionView{
+            return UIEdgeInsets(top: 20, left: 15, bottom: 30, right: 15)
+        } else{
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
 }
 
 // MARK: - UISearchBar method
 
 extension MoviesVC: UISearchBarDelegate{
+    
+    private func setupSearchController(){
+        // Place the search bar in the navigation item's title view.
+        self.navigationItem.titleView = searchController.searchBar
+        
+        // Don't hide the navigation bar or view because the search bar is in it.
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        for subView in searchController.searchBar.subviews {
+            
+            for subViewOne in subView.subviews {
+                
+                if let textField = subViewOne as? UITextField {
+                    
+                    subViewOne.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+                    
+                    //use the code below if you want to change the color of placeholder
+                    let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
+                    textFieldInsideUISearchBarLabel?.textColor = .black
+                }
+            }
+        }
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // If the search bar contains text, filter our data with the string
@@ -210,12 +256,17 @@ extension MoviesVC: MoviesView{
     
     func addMovies(movie: Movie){
         moviesToShow.append(movie)
-        collectionView.setContentOffset(.zero, animated: true) // Scroll to top
+        moviesCollectionView.setContentOffset(.zero, animated: true) // Scroll to top
+    }
+    
+    func addGenres(genre: Genre){
+        genresToShow.append(genre)
+        reload()
     }
     
     func addSearchedMovies(movie: Movie){
         searchResults.append(movie)
-        collectionView.setContentOffset(.zero, animated: true) // Scroll to top
+        moviesCollectionView.setContentOffset(.zero, animated: true) // Scroll to top
     }
     
     func setCurrentPage(to num: Int){
@@ -235,7 +286,8 @@ extension MoviesVC: MoviesView{
     }
     
     func reload(){
-        collectionView.reloadData()
+        moviesCollectionView.reloadData()
+        genreCollectionView.reloadData()
     }
 }
 

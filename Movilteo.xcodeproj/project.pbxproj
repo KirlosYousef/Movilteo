@@ -12,6 +12,9 @@
 		BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2AAA9624E376D600C87B04 /* Secrets.swift */; };
 		BC335F3824E83C6100908DC4 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC335F3724E83C6100908DC4 /* RealmService.swift */; };
 		BC65B44724E1F1F8007B10CD /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC65B44624E1F1F8007B10CD /* Movies.swift */; };
+		BC6701C2250DAC6E0018FB97 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6701C1250DAC6E0018FB97 /* GenreCell.swift */; };
+		BC6701C4250DAF8A0018FB97 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6701C3250DAF8A0018FB97 /* Genre.swift */; };
+		BC6701C6250DB5C80018FB97 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6701C5250DB5C80018FB97 /* Genres.swift */; };
 		BCA3D51124E0381E00546EE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D51024E0381E00546EE1 /* AppDelegate.swift */; };
 		BCA3D51324E0381E00546EE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */; };
 		BCA3D51824E0381E00546EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA3D51624E0381E00546EE1 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 		BC2AAA9624E376D600C87B04 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		BC335F3724E83C6100908DC4 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		BC65B44624E1F1F8007B10CD /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		BC6701C1250DAC6E0018FB97 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
+		BC6701C3250DAF8A0018FB97 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		BC6701C5250DB5C80018FB97 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		BCA3D50D24E0381E00546EE1 /* Movilteo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movilteo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA3D51024E0381E00546EE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA3D51224E0381E00546EE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				BCC01F3E24E0668500770F68 /* MoviesVC.swift */,
 				BCC01F3C24E063D400770F68 /* MovieCell.swift */,
 				BCF68C2724E4B7E7004CE779 /* MovieDataVC.swift */,
+				BC6701C1250DAC6E0018FB97 /* GenreCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +159,8 @@
 				BCA3D52924E03DF600546EE1 /* Movie.swift */,
 				BC65B44624E1F1F8007B10CD /* Movies.swift */,
 				BC2AAA9624E376D600C87B04 /* Secrets.swift */,
+				BC6701C3250DAF8A0018FB97 /* Genre.swift */,
+				BC6701C5250DB5C80018FB97 /* Genres.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,13 +288,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCFCCAE324E9DA8D005F77E5 /* ReachabilityHandler.swift in Sources */,
+				BC6701C6250DB5C80018FB97 /* Genres.swift in Sources */,
 				BCA3D51124E0381E00546EE1 /* AppDelegate.swift in Sources */,
 				BC335F3824E83C6100908DC4 /* RealmService.swift in Sources */,
 				BCC01F3D24E063D400770F68 /* MovieCell.swift in Sources */,
 				BCA3D52A24E03DF600546EE1 /* Movie.swift in Sources */,
 				BCC01F3F24E0668500770F68 /* MoviesVC.swift in Sources */,
 				BCA3D51324E0381E00546EE1 /* SceneDelegate.swift in Sources */,
+				BC6701C4250DAF8A0018FB97 /* Genre.swift in Sources */,
 				BC65B44724E1F1F8007B10CD /* Movies.swift in Sources */,
+				BC6701C2250DAC6E0018FB97 /* GenreCell.swift in Sources */,
 				BCC01F4524E0732300770F68 /* APIService.swift in Sources */,
 				BC2AAA9724E376D600C87B04 /* Secrets.swift in Sources */,
 				BCFCCADD24E9C869005F77E5 /* ImagesService.swift in Sources */,
