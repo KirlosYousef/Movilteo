@@ -26,6 +26,7 @@ final class MoviesVC: UIViewController{
     @IBOutlet weak var pageNumLabel: UILabel!
     @IBOutlet weak var backButtonOutlet: UIButton!
     @IBOutlet weak var nextButtonOutlet: UIButton!
+    @IBOutlet weak var allGenreButtonOutlet: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private let moviesPresenter = MoviesPresenter()
@@ -80,6 +81,16 @@ final class MoviesVC: UIViewController{
         backButtonOutlet.isEnabled = false
         backButtonOutlet.setTitleColor(.gray, for: .disabled)
         nextButtonOutlet.setTitleColor(.gray, for: .disabled)
+        
+        setButtonBackground(button: nextButtonOutlet)
+        setButtonBackground(button: backButtonOutlet)
+        setButtonBackground(button: allGenreButtonOutlet)
+    }
+    
+    private func setButtonBackground(button: UIButton){
+        button.contentEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        button.backgroundColor = #colorLiteral(red: 0.04651431513, green: 0.0591204621, blue: 0.1147678618, alpha: 1)
+        button.layer.cornerRadius = 10
     }
     
     /// Updates the buttons states (enabled/disabled) depends on the current page number.

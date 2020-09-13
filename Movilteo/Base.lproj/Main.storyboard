@@ -248,6 +248,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="yvW-7L-X4r" id="g6x-ZC-cGp"/>
+                        <outlet property="allGenreButtonOutlet" destination="qTg-s4-ONs" id="DqG-TP-CJ9"/>
                         <outlet property="backButtonOutlet" destination="9tP-PK-t6j" id="b1K-7v-pcG"/>
                         <outlet property="genreCollectionView" destination="8T1-0I-zSP" id="CaH-Xa-Mtd"/>
                         <outlet property="moviesCollectionView" destination="ieY-Da-39l" id="w9n-Na-lbU"/>
