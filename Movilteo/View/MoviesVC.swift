@@ -34,6 +34,7 @@ final class MoviesVC: UIViewController{
     
     private var currentPageNum: Int = 1
     private var maxPagesNum: Int = 500
+    private var currentGenreID: Int = 0
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchResults: [Movie] = []
@@ -65,7 +66,7 @@ final class MoviesVC: UIViewController{
     
     /// Request the movies of the new page from the presenter and updates page number label text.
     func getMovies(){
-        moviesPresenter.fetchMovies(page: currentPageNum)
+        moviesPresenter.fetchMovies(page: currentPageNum, genreId: currentGenreID)
     }
     
     /// Request the movies of the new page from the presenter and updates page number label text.
@@ -118,6 +119,17 @@ final class MoviesVC: UIViewController{
         currentPageNum += 1
         isSearching ? searchMovies(for: searchText) : getMovies()
     }
+    
+    @IBAction func allGenresButtonAction(_ sender: Any) {
+        currentGenreID = 0
+        currentPageNum = 1
+        getMovies()
+    }
+    
+    private enum CustomButton{
+        case next,
+             back
+    }
 }
 
 // MARK: - UICollectionView methods
@@ -130,7 +142,9 @@ extension MoviesVC: UICollectionViewDelegate{
             vc?.movie = moviesToShow[indexPath.row]
             self.navigationController?.pushViewController(vc!, animated: true)
         } else{
-            print("\(genresToShow[indexPath.row].name!)")
+            currentGenreID = genresToShow[indexPath.row].id
+            currentPageNum = 1
+            getMovies()
         }
     }
     
@@ -289,11 +303,6 @@ extension MoviesVC: MoviesView{
         moviesCollectionView.reloadData()
         genreCollectionView.reloadData()
     }
-}
-
-private enum CustomButton{
-    case next,
-         back
 }
 
 extension UIColor {

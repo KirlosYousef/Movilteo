@@ -45,37 +45,48 @@ class MoviesPresenter: MoviesViewPresenter{
     }
     
     /// Sending to the API Service to fetch the movies.
-    func fetchMovies(page: Int) {
+    func fetchMovies(page: Int, genreId: Int) {
         
         self.moviesView?.setEmpty()
         
-        APIService.shared.fetchMovies(page: page) { result in
-            switch result{
+        if genreId == 0 {
+            APIService.shared.fetchMovies(page: page) { result in
+                self.checkResult(page: page, result: result)
+            }
+        } else {
+            APIService.shared.fetchMoviesWithGenre(page: page, genreId: genreId) { result in
+                self.checkResult(page: page, result: result)
+            }
+        }
+    }
+    
+    private func checkResult(page: Int, result: Result<Movies, FetchingError>){
+        switch result{
+        
+        // When receiving data from the API...
+        case .success(let moviesData):
+            self.showMovies(moviesData: moviesData)
             
-            // When receiving data from the API...
-            case .success(let moviesData):
-                self.showMovies(moviesData: moviesData)
+            RealmService.shared.addToDB(movies: moviesData)
+            
+        // If no internet connection, try the local databse.
+        case .failure(_):
+            
+            RealmService.shared.fetchMoviesFromDB(page: page) { storedResult in
+                switch storedResult{
                 
-                RealmService.shared.addToDB(movies: moviesData)
-                
-            // If no internet connection, try the local databse.
-            case .failure(_):
-                
-                RealmService.shared.fetchMoviesFromDB(page: page) { storedResult in
-                    switch storedResult{
+                // When receiving data from the database...
+                case .success(let moviesData):
+                    self.showMovies(moviesData: moviesData)
                     
-                    // When receiving data from the database...
-                    case .success(let moviesData):
-                        self.showMovies(moviesData: moviesData)
-                        
-                    // If no data available on the databse.
-                    case .failure(let err):
-                        print(err)
-                    }
+                // If no data available on the databse.
+                case .failure(let err):
+                    print(err)
                 }
             }
         }
     }
+    
     
     /// Sends back the movies data to the view to show.
     private func showMovies(moviesData: Movies){
@@ -121,7 +132,7 @@ class MoviesPresenter: MoviesViewPresenter{
 
 protocol MoviesViewPresenter: class {
     func attachView(_ view: MoviesView?)
-    func fetchMovies(page: Int)
+    func fetchMovies(page: Int, genreId: Int)
     func fetchGenres()
     func searchForMovies(withKeyword keyword: String, page: Int)
 }
