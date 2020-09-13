@@ -57,10 +57,12 @@ extension Movie: Displayable {
         return URL(string: "https://image.tmdb.org/t/p/original\(backdropPath ?? "")")!
     }
     
+    /// Deprecated
     var voteAveragePercentText: String {
         return "\(Int(voteAverage * 10))%"
     }
     
+    /// Deprecated
     var ratingText: String {
         let rating = Int(voteAverage)
         let ratingText = (0..<rating).reduce("") { (acc, _) -> String in

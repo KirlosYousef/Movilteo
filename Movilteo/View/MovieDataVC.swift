@@ -14,6 +14,7 @@ class MovieDataVC: UIViewController {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieOverviewLabel: UILabel!
+    @IBOutlet weak var ratingBackground: UIView!
     
     var movie: Movie?
     
@@ -21,7 +22,8 @@ class MovieDataVC: UIViewController {
         super.viewDidLoad()
         if movie != nil {
             movieTitleLabel.text = movie!.titleLabelText
-            movieRatingLabel.text = movie!.ratingText
+            ratingBackground.layer.cornerRadius = 20
+            movieRatingLabel.text = "⭐️ " + String(movie!.voteAverage) + "/10"
             movieOverviewLabel.text = movie!.overview
             movieImage.image = ImagesService.shared.getSavedImage(withID: movie!.id, posterURL: movie!.posterURL)
         } else{

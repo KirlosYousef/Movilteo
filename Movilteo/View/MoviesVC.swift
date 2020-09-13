@@ -26,7 +26,6 @@ final class MoviesVC: UIViewController{
     @IBOutlet weak var nextButtonOutlet: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
     private let moviesPresenter = MoviesPresenter()
     private var moviesToShow: [Movie] = []
     
@@ -105,20 +104,26 @@ final class MoviesVC: UIViewController{
     /// Updates the buttons states (enabled/disabled) depends on the current page number.
     private func resetButtons(button: CustomButton){
         if button == CustomButton.back {
+            
             if currentPageNum == 2{
                 backButtonOutlet.isEnabled = false
             }
-            if nextButtonOutlet.isEnabled == false{
+            
+            if !nextButtonOutlet.isEnabled{
                 nextButtonOutlet.isEnabled = true
             }
+            
         } else {
+            
             if currentPageNum == maxPagesNum - 1 {
                 nextButtonOutlet.isEnabled = false
                 backButtonOutlet.titleLabel?.textColor = .black
             }
-            if backButtonOutlet.isEnabled == false{
+            
+            if !backButtonOutlet.isEnabled{
                 backButtonOutlet.isEnabled = true
             }
+            
         }
     }
     

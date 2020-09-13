@@ -173,14 +173,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="clo-BJ-Odf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Kms-Mq-pju">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Kms-Mq-pju">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9f-Mw-LD2">
-                                                <rect key="frame" x="0.0" y="0.0" width="200.5" height="233"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="233"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y6z-Gm-EGx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="233"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="233"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.070588235289999995" green="0.090196078430000007" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,20 +192,41 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0DW-46-tRo">
-                                                <rect key="frame" x="213.5" y="0.0" width="200.5" height="233"/>
+                                                <rect key="frame" x="207" y="0.0" width="207" height="233"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3K-Gf-hRa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200.5" height="116.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3K-Gf-hRa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="116.5"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHL-od-jnr">
-                                                        <rect key="frame" x="0.0" y="116.5" width="200.5" height="116.5"/>
-                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TB-he-1HF">
+                                                        <rect key="frame" x="0.0" y="116.5" width="207" height="116.5"/>
+                                                        <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-WM-dbK">
+                                                                <rect key="frame" x="53.5" y="38" width="100" height="40"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️ 9.8/10" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHL-od-jnr">
+                                                                        <rect key="frame" x="13" y="10" width="74.5" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.046514315133586122" green="0.059120462098983251" blue="0.11476786176587761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="Qhy-4g-dbU"/>
+                                                                    <constraint firstItem="XHL-od-jnr" firstAttribute="centerY" secondItem="6PB-WM-dbK" secondAttribute="centerY" id="hOa-Pk-lj1"/>
+                                                                    <constraint firstItem="XHL-od-jnr" firstAttribute="centerX" secondItem="6PB-WM-dbK" secondAttribute="centerX" id="rGz-kp-YvO"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="sRi-g5-eWL"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="6PB-WM-dbK" firstAttribute="centerX" secondItem="8TB-he-1HF" secondAttribute="centerX" id="2tP-MO-QZF"/>
+                                                            <constraint firstItem="6PB-WM-dbK" firstAttribute="centerY" secondItem="8TB-he-1HF" secondAttribute="centerY" id="ZHj-mG-czd"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.070588235289999995" green="0.090196078430000007" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
@@ -215,19 +236,39 @@
                                     <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-tH-xIU">
                                         <rect key="frame" x="0.0" y="233" width="414" height="541"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-67-wW2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-67-wW2">
                                                 <rect key="frame" x="16" y="0.0" width="382" height="541"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Overview">
+                                                    <fragment>
+                                                        <string key="content">The people who are crazy enough to think they can change the world are the ones who do.
+</string>
                                                         <attributes>
+                                                            <color key="NSBackgroundColor" red="0.069572940469999997" green="0.088210739199999999" blue="0.17117205260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" metaFont="system" size="17"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <color key="NSStrokeColor" red="0.39607999999999999" green="0.40392" blue="0.41960999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="― Steve Jobs">
+                                                        <attributes>
+                                                            <color key="NSBackgroundColor" red="0.069572940469999997" green="0.088210739199999999" blue="0.17117205260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                            <real key="NSKern" value="0.0"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="15" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <color key="NSStrokeColor" red="0.39607999999999999" green="0.40392" blue="0.41960999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
                                                 <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.090196078430000007" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -258,6 +299,7 @@
                         <outlet property="movieOverviewLabel" destination="9dg-67-wW2" id="hAs-KR-pot"/>
                         <outlet property="movieRatingLabel" destination="XHL-od-jnr" id="Bau-ZL-Szt"/>
                         <outlet property="movieTitleLabel" destination="I3K-Gf-hRa" id="arT-P0-lP6"/>
+                        <outlet property="ratingBackground" destination="6PB-WM-dbK" id="ui4-ja-g2v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypR-XG-jzQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -284,4 +326,5 @@
             <point key="canvasLocation" x="1153.6231884057972" y="1118.9732142857142"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
