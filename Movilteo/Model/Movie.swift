@@ -8,14 +8,27 @@
 import Foundation
 import RealmSwift
 
-class Movie: Object, Decodable {
+class Movie: Object, Decodable{
     
-    @objc dynamic var id: Int
+    @objc dynamic var id: Int = 0
     @objc dynamic var title: String?
     @objc dynamic var backdropPath: String?
     @objc dynamic var posterPath: String?
-    @objc dynamic var overview: String
-    @objc dynamic var voteAverage: Double
+    @objc dynamic var overview: String = ""
+    @objc dynamic var voteAverage: Double = 0.0
+    let genreIds = List<Int>()
+    
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.posterPath = try container.decode(String.self, forKey: .posterPath)
+        self.overview = try container.decode(String.self, forKey: .overview)
+        self.voteAverage = try container.decode(Double.self, forKey: .voteAverage)
+        let genres = try container.decodeIfPresent([Int].self, forKey: .genreIds) ?? [Int(from: decoder)]
+        genreIds.append(objectsIn: genres)
+    }
     
     override class func primaryKey() -> String? {
         return "id"
@@ -28,7 +41,9 @@ class Movie: Object, Decodable {
         case posterPath = "poster_path"
         case overview
         case voteAverage = "vote_average"
+        case genreIds = "genre_ids"
     }
+    
 }
 
 protocol Displayable {

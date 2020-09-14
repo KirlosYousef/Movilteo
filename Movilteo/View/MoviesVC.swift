@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+let screenWidth = UIScreen.main.bounds.width
+
 protocol MoviesView: class {
     func getMovies()
     func addGenres(genre: Genre)
@@ -41,8 +43,6 @@ final class MoviesVC: UIViewController{
     private var searchResults: [Movie] = []
     private var searchText: String = ""
     private var isSearching: Bool = false
-    
-    let screenWidth = UIScreen.main.bounds.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,14 +151,15 @@ extension MoviesVC: UICollectionViewDelegate{
         if collectionView == self.moviesCollectionView{
             let vc = storyboard?.instantiateViewController(withIdentifier: "MovieDataVC") as? MovieDataVC
             vc?.movie = moviesToShow[indexPath.row]
+            vc?.genres = genresToShow
             self.navigationController?.pushViewController(vc!, animated: true)
         } else{
             currentGenreID = genresToShow[indexPath.row].id
             currentPageNum = 1
+            backButtonOutlet.isEnabled = false
             getMovies()
         }
     }
-    
 }
 
 extension MoviesVC: UICollectionViewDataSource{
