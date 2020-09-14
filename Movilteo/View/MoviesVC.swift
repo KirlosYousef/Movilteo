@@ -215,7 +215,7 @@ extension MoviesVC: UICollectionViewDelegateFlowLayout {
         if collectionView == moviesCollectionView{
             return UIEdgeInsets(top: 20, left: 15, bottom: 30, right: 15)
         } else{
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 375)
         }
     }
     
