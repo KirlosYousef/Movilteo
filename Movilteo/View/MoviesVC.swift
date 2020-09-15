@@ -89,7 +89,13 @@ final class MoviesVC: UIViewController{
     
     private func setButtonBackground(button: UIButton){
         button.contentEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
-        button.backgroundColor = #colorLiteral(red: 0.04651431513, green: 0.0591204621, blue: 0.1147678618, alpha: 1)
+        
+        if button == allGenreButtonOutlet && currentGenreID == 0{
+            button.backgroundColor = #colorLiteral(red: 0.06957294047, green: 0.0882107392, blue: 0.1711720526, alpha: 1)
+        } else {
+            button.backgroundColor = #colorLiteral(red: 0.04651431513, green: 0.0591204621, blue: 0.1147678618, alpha: 1)
+        }
+        
         button.layer.cornerRadius = 10
     }
     
@@ -132,6 +138,7 @@ final class MoviesVC: UIViewController{
     }
     
     @IBAction func allGenresButtonAction(_ sender: Any) {
+        allGenreButtonOutlet.backgroundColor = #colorLiteral(red: 0.06957294047, green: 0.0882107392, blue: 0.1711720526, alpha: 1)
         currentGenreID = 0
         currentPageNum = 1
         getMovies()
@@ -155,6 +162,7 @@ extension MoviesVC: UICollectionViewDelegate{
             self.navigationController?.pushViewController(vc!, animated: true)
         } else{
             currentGenreID = genresToShow[indexPath.row].id
+            setButtonBackground(button: allGenreButtonOutlet)
             currentPageNum = 1
             backButtonOutlet.isEnabled = false
             getMovies()
@@ -182,7 +190,7 @@ extension MoviesVC: UICollectionViewDataSource{
             
             cell.movieImageView.layer.cornerRadius = 10
             
-            // border
+            // Border
             cell.movieImageView.layer.borderWidth = 2
             cell.movieImageView.layer.borderColor = UIColor.random.cgColor
             
@@ -196,6 +204,12 @@ extension MoviesVC: UICollectionViewDataSource{
             
             cell.genreTitle.text = genre.name
             cell.titleBackground.layer.cornerRadius = 5
+            
+            if self.currentGenreID == genre.id{
+                cell.titleBackground.backgroundColor = #colorLiteral(red: 0.06957294047, green: 0.0882107392, blue: 0.1711720526, alpha: 1)
+            } else{
+                cell.titleBackground.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.05882352941, blue: 0.1137254902, alpha: 1)
+            }
             
             return cell
         }
