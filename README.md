@@ -39,7 +39,7 @@ You can search any data using the searching bar at the top and navigate between 
 The ability to filter all the data using the genres horizontal collection view at the top, or cancel filtering with the "All" option.
 
 
-<img height="700" src="https://i.imgur.com/kJcfMBX.png"><img height="700" src="https://i.imgur.com/sqKeq3x.png"><img height="700" src="https://i.imgur.com/cTDd3BZ.png">
+<img height="600" src="https://i.imgur.com/kJcfMBX.png"><img height="600" src="https://i.imgur.com/sqKeq3x.png"><img height="600" src="https://i.imgur.com/cTDd3BZ.png">
 
 # Tech
 - <a href="https://developers.themoviedb.org/3/discover/movie-discover" target="_blank">TMDB</a> for fetching the movies data
