@@ -21,13 +21,20 @@ class Movie: Object, Decodable{
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.posterPath = try container.decode(String.self, forKey: .posterPath)
-        self.overview = try container.decode(String.self, forKey: .overview)
-        self.voteAverage = try container.decode(Double.self, forKey: .voteAverage)
-        let genres = try container.decodeIfPresent([Int].self, forKey: .genreIds) ?? [Int(from: decoder)]
-        genreIds.append(objectsIn: genres)
+        
+        do {
+            self.id = try container.decode(Int.self, forKey: .id)
+            self.title = try container.decode(String.self, forKey: .title)
+            
+            self.posterPath = try container.decode(String.self, forKey: .posterPath)
+            
+            self.overview = try container.decode(String.self, forKey: .overview)
+            self.voteAverage = try container.decode(Double.self, forKey: .voteAverage)
+            let genres = try container.decodeIfPresent([Int].self, forKey: .genreIds) ?? [Int(from: decoder)]
+            genreIds.append(objectsIn: genres)
+        } catch{
+            return
+        }
     }
     
     override class func primaryKey() -> String? {
