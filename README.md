@@ -6,7 +6,6 @@
 [![GitHub license](https://img.shields.io/github/license/KirlosYousef/Movilteo)](https://github.com/KirlosYousef/Movilteo/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FKirlosYousef%2FMovilteo)](https://twitter.com/intent/tweet?text=Check-this-out!:&url=https%3A%2F%2Fgithub.com%2FKirlosYousef%2FMovilteo)
 
-<!-- ![Imgur Image](https://i.imgur.com/ty9ftBg.jpg) -->
 <img height="500" src="https://i.imgur.com/ty9ftBg.jpg">
 
 # Table of Contents
